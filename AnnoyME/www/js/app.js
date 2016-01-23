@@ -25,11 +25,16 @@ angular.module('starter', ['ionic'])
 
 .controller('AppCtrl', function($scope, $ionicModal) {
   
+  /*
   $scope.alarms = [
     { name: '15:00' },
     { name: '17:00' },
     { name: '22:30' },
   ];
+  */
+  $scope.alarms = [];
+  var storedData = JSON.parse(window.localStorage.getItem("alarms"));
+  $scope.alarms = storedData;
 
   $ionicModal.fromTemplateUrl('templates/modal.html', {
     scope: $scope
@@ -40,6 +45,15 @@ angular.module('starter', ['ionic'])
   $scope.createAlarm = function(u) {        
     $scope.alarms.push({ name: u.hour + ':' + u.minute });
     $scope.modal.hide();
+    window.localStorage.setItem("alarms", JSON.stringify($scope.alarms));
+
+    //var storedData = JSON.parse(window.localStorage.getItem("alarms"));
+    //$scope.alarms = storedData;
+  };
+
+  $scope.clearAlarm = function() {        
+    $scope.alarms = [];
+    window.localStorage.setItem("alarms", JSON.stringify($scope.alarms));
   };
 
 });

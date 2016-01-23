@@ -29,10 +29,12 @@
       <div class="buttons">
         <button class="button button-icon ion-compose" ng-click="modal.show()">
         </button>
+        <button class="button button-icon ion-trash-a" ng-click="clearAlarm()">
+        </button>
       </div>
     </ion-header-bar>
     <ion-content>
-      <ion-list>
+      <ion-list >
         <ion-item ng-repeat="alarm in alarms">
           {{alarm.name}}
         </ion-item>
