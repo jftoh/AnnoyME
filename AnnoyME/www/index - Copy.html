@@ -3,7 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+    <title>AnnoyME</title>
+
+    <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+    <script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -24,42 +27,45 @@
   <body ng-app="starter" ng-controller="AppCtrl">
 
     <ion-pane>
-      <ion-header-bar class="bar-positive">
-      <h1 class="title">Alarms</h1>
-      <div class="buttons">
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">Alarms</h1>
+        <div class="buttons">
         <button class="button button-icon ion-compose" ng-click="modal.show()">
         </button>
-      </div>
-    </ion-header-bar>
-    <ion-content>
-      <ion-list>
-        <ion-item ng-repeat="alarm in alarms">
-          {{alarm.name}}
-        </ion-item>
-      </ion-list>
-    </ion-content>
-    
+      </ion-header-bar>
+      <ion-content>
+        <ion-list>
+          <ion-item ng-repeat="contact in contacts">
+            {{contact.name}}
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-pane>
+
     <script id="templates/modal.html" type="text/ng-template">
       <ion-modal-view>
         <ion-header-bar class="bar bar-header bar-positive">
-          <h1 class="title">New Alarm</h1>
+          <h1 class="title">New Contact</h1>
           <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
         </ion-header-bar>
         <ion-content class="padding">
           <div class="list">
             <label class="item item-input">
-              <span class="input-label">Hour</span>
-              <input ng-model="newAlarm.hour" type="text">
+              <span class="input-label">First Name</span>
+              <input ng-model="newUser.firstName" type="text">
             </label>
             <label class="item item-input">
-              <span class="input-label">Minute</span>
-              <input ng-model="newAlarm.minute" type="text">
+              <span class="input-label">Last Name</span>
+              <input ng-model="newUser.lastName" type="text">
             </label>
-            <button class="button button-full button-positive" ng-click="createAlarm(newAlarm)">Create</button>
+            <label class="item item-input">
+              <span class="input-label">Email</span>
+              <input ng-model="newUser.email" type="text">
+            </label>
+            <button class="button button-full button-positive" ng-click="createContact(newUser)">Create</button>
           </div>
         </ion-content>
       </ion-modal-view>
     </script>
-    </ion-pane>
   </body>
 </html>

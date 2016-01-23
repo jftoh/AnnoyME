@@ -22,3 +22,24 @@ angular.module('starter', ['ionic'])
     }
   });
 })
+
+.controller('AppCtrl', function($scope, $ionicModal) {
+  
+  $scope.alarms = [
+    { name: '15:00' },
+    { name: '17:00' },
+    { name: '22:30' },
+  ];
+
+  $ionicModal.fromTemplateUrl('templates/modal.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  
+  $scope.createAlarm = function(u) {        
+    $scope.alarms.push({ name: u.hour + ':' + u.minute });
+    $scope.modal.hide();
+  };
+
+});
